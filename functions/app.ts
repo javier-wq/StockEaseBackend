@@ -6,6 +6,7 @@ import fileUpload from "express-fileupload";
 import { router } from "../src/routes";
 import db from "../src/config/mongo";
 
+const PORT = process.env.PORT || 3001;
 const app = express();
 
 app.use(cors());
@@ -22,4 +23,5 @@ app.use(router);
 
 db().then(() => console.log("Connection established successfully"));
 
+app.listen(PORT, () => console.log(`Server on port ${PORT}`));
 exports.handler = ServerlessHttp(app);
